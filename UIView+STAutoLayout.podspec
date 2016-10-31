@@ -10,6 +10,6 @@ s.source   = {
 :tag => s.version.to_s
 }
 s.ios.deployment_target = '7.0'
-s.source_files = 'STAutoLayout/UIView+STAutoLayout.h','STAutoLayout/UIView+STAutoLayout.m'
+s.source_files = "STAutoLayout/UIView+STAutoLayout.h", "STAutoLayout/UIView+STAutoLayout.m"
 s.requires_arc = true
 end

@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-s.name     = 'UIView+STAutoLayout'
+s.name     = 'UIView+STFrame'
 s.version  = '1.0.0'
 s.license = { :type => 'MIT', :file => 'LICENSE'}
 s.summary  = '简单的自动布局的类别'
@@ -10,6 +10,6 @@ s.source   = {
 :tag => s.version.to_s
 }
 s.ios.deployment_target = '7.0'
-s.source_files = 'STAutoLayout/UIView+STFrame.h','STAutoLayout/UIView+STFrame.m'
+s.source_files = "STAutoLayout/UIView+STFrame.h", "STAutoLayout/UIView+STFrame.m"
 s.requires_arc = true
 end

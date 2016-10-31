@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-
-#define SCREEN_WIDTH ([[UIScreen mainScreen]bounds].size.width)
-#define SCREEN_HEIGHT ([[UIScreen mainScreen]bounds].size.height)
-#define SCREEN_WITHOUT_STATUS_HEIGHT (SCREEN_HEIGHT - [[UIApplication sharedApplication] statusBarFrame].size.height)
+#define SCREEN_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
+#define SCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 
 typedef CGFloat UIScreenType;
 
@@ -22,101 +19,44 @@ static UIScreenType UIScreenType_iPhone6P = 414.0f;
 
 @interface UIView (STFrame)
 
-// coordinator getters
-- (CGFloat)height;
-- (CGFloat)width;
-- (CGFloat)x;
-- (CGFloat)y;
-- (CGSize)size;
-- (CGPoint)origin;
-- (CGFloat)centerX;
-- (CGFloat)centerY;
+/** 1.间隔X值 */
+@property (nonatomic, assign) CGFloat st_x;
 
-- (CGFloat)left;
-- (CGFloat)top;
-- (CGFloat)bottom;
-- (CGFloat)right;
+/** 2.间隔Y值 */
+@property (nonatomic, assign) CGFloat st_y;
 
-- (void)setX:(CGFloat)x;
-- (void)setLeft:(CGFloat)left;
-- (void)setY:(CGFloat)y;
-- (void)setTop:(CGFloat)top;
+/** 3.宽度 */
+@property (nonatomic, assign) CGFloat st_width;
 
-// height
-- (void)setHeight:(CGFloat)height;
-- (void)heightEqualToView:(UIView *)view;
+/** 4.高度 */
+@property (nonatomic, assign) CGFloat st_height;
 
-// width
-- (void)setWidth:(CGFloat)width;
-- (void)widthEqualToView:(UIView *)view;
+/** 5.中心点X值 */
+@property (nonatomic, assign) CGFloat st_centerX;
 
-// size
-- (void)setSize:(CGSize)size;
-- (void)setSize:(CGSize)size screenType:(UIScreenType)screenType;
-- (void)sizeEqualToView:(UIView *)view;
+/** 6.中心点Y值 */
+@property (nonatomic, assign) CGFloat st_centerY;
 
-// center
-- (void)setCenterX:(CGFloat)centerX;
-- (void)setCenterY:(CGFloat)centerY;
-- (void)centerXEqualToView:(UIView *)view;
-- (void)centerYEqualToView:(UIView *)view;
-- (void)centerEqualToView:(UIView *)view;
+/** 7.尺寸大小 */
+@property (nonatomic, assign) CGSize st_size;
 
-// top, bottom, left, right -- Version 1.1.0
-- (void)fromTheTop:(CGFloat)distance ofView:(UIView *)view;
-- (void)fromTheBottom:(CGFloat)distance ofView:(UIView *)view;
-- (void)fromTheLeft:(CGFloat)distance ofView:(UIView *)view;
-- (void)fromTheRight:(CGFloat)distance ofView:(UIView *)view;
+/** 8.起始点 */
+@property (nonatomic, assign) CGPoint st_origin;
 
-- (void)fromTheRelativeTop:(CGFloat)distance ofView:(UIView *)view screenType:(UIScreenType)screenType;
-- (void)fromTheRelativeBottom:(CGFloat)distance ofView:(UIView *)view screenType:(UIScreenType)screenType;
-- (void)fromTheRelativeLeft:(CGFloat)distance ofView:(UIView *)view screenType:(UIScreenType)screenType;
-- (void)fromTheRelativeRight:(CGFloat)distance ofView:(UIView *)view screenType:(UIScreenType)screenType;
+/** 9.上 */
+@property (nonatomic) CGFloat st_top;
 
-- (void)relativeTopInContainer:(CGFloat)top shouldResize:(BOOL)shouldResize screenType:(UIScreenType)screenType;
-- (void)relativeBottomInContainer:(CGFloat)bottom shouldResize:(BOOL)shouldResize screenType:(UIScreenType)screenType;
-- (void)relativeLeftInContainer:(CGFloat)left shouldResize:(BOOL)shouldResize screenType:(UIScreenType)screenType;
-- (void)relativeRightInContainer:(CGFloat)right shouldResize:(BOOL)shouldResize screenType:(UIScreenType)screenType;
+/** 10.下 */
+@property (nonatomic) CGFloat st_bottom;
 
-// top, bottom, left, right -- Old Version
-- (void)top:(CGFloat)top FromView:(UIView *)view;
-- (void)bottom:(CGFloat)bottom FromView:(UIView *)view;
-- (void)left:(CGFloat)left FromView:(UIView *)view;
-- (void)right:(CGFloat)right FromView:(UIView *)view;
+/** 11.左 */
+@property (nonatomic) CGFloat st_left;
 
-- (void)topRatio:(CGFloat)top FromView:(UIView *)view screenType:(UIScreenType)screenType;
-- (void)bottomRatio:(CGFloat)bottom FromView:(UIView *)view screenType:(UIScreenType)screenType;
-- (void)leftRatio:(CGFloat)left FromView:(UIView *)view screenType:(UIScreenType)screenType;
-- (void)rightRatio:(CGFloat)right FromView:(UIView *)view screenType:(UIScreenType)screenType;
+/** 12.右 */
+@property (nonatomic) CGFloat st_right;
 
-- (void)topInContainer:(CGFloat)top shouldResize:(BOOL)shouldResize;
-- (void)bottomInContainer:(CGFloat)bottom shouldResize:(BOOL)shouldResize;
-- (void)leftInContainer:(CGFloat)left shouldResize:(BOOL)shouldResize;
-- (void)rightInContainer:(CGFloat)right shouldResize:(BOOL)shouldResize;
-
-- (void)topRatioInContainer:(CGFloat)top shouldResize:(BOOL)shouldResize screenType:(UIScreenType)screenType;
-- (void)bottomRatioInContainer:(CGFloat)bottom shouldResize:(BOOL)shouldResize screenType:(UIScreenType)screenType;
-- (void)leftRatioInContainer:(CGFloat)left shouldResize:(BOOL)shouldResize screenType:(UIScreenType)screenType;
-- (void)rightRatioInContainer:(CGFloat)right shouldResize:(BOOL)shouldResize screenType:(UIScreenType)screenType;
-
-- (void)topEqualToView:(UIView *)view;
-- (void)bottomEqualToView:(UIView *)view;
-- (void)leftEqualToView:(UIView *)view;
-- (void)rightEqualToView:(UIView *)view;
-
-
-
-// imbueset
-- (void)fillWidth;
-- (void)fillHeight;
-- (void)fill;
-
-- (UIView *)topSuperView;
+/** 1.填充父视图 */
+- (void)st_fill;
 
 @end
 
-@protocol LayoutProtocol
-@required
-// put your layout code here
-- (void)calculateLayout;
-@end

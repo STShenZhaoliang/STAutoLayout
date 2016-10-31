@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "UIView+STFrame.h"
 @interface ViewController ()
 
 @end
@@ -15,6 +15,12 @@
 @implementation ViewController
 
 #pragma mark - --- 1.init 生命周期 ---
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+}
 
 #pragma mark - --- 2.delegate 视图委托 ---
 
